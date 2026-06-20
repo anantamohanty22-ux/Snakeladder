@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Snake and Ladder - Game</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      table { border-collapse: collapse; margin-top: 1rem }
+      td, th { border: 1px solid #ccc; padding: 8px 12px }
+      .controls { margin-top: 1rem }
+    </style>
+  </head>
+  <body>
+    <h1>Snake and Ladder</h1>
+
+    {% if game.winner %}
+      <h2>{{ game.winner.name }} wins!</h2>
+      <form action="/reset" method="post"><button type="submit">New game</button></form>
+    {% else %}
+      <p>Current: {{ game.players[game.current].name }} (pos {{ game.players[game.current].position }})</p>
+      <form class="controls" action="/roll" method="post">
+        <button type="submit">Roll Dice</button>
+      </form>
+    {% endif %}
+
+    <h3>Players</h3>
+    <table>
+      <tr><th>Name</th><th>Position</th><th>Type</th></tr>
+      {% for p in game.players %}
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.position }}</td>
+        <td>{{ 'AI' if p.is_ai else 'Human' }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

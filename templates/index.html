@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Snake and Ladder - Start</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      label { display:block; margin-top: .5rem }
+      .btn { margin-top: 1rem }
+    </style>
+  </head>
+  <body>
+    <h1>Snake and Ladder</h1>
+    <form action="/start" method="post">
+      <label>Player 1 name
+        <input name="p1" placeholder="Alice" />
+      </label>
+
+      <label>Player 2 name
+        <input name="p2" placeholder="Bob" />
+      </label>
+
+      <label>
+        <input type="checkbox" name="ai2" /> Make Player 2 an AI
+      </label>
+
+      <button class="btn" type="submit">Start 2-player game</button>
+    </form>
+  </body>
+</html>
